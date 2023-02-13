@@ -65,7 +65,15 @@ function App() {
             });
 
             // Addtitional validations
-            if (Number(values.stickerPrice) > Number(values.wholesalePrice)) {
+            const formatedStickerPrice = Number(
+              values.stickerPrice ? values.stickerPrice.replace(/,/g, "") : ""
+            );
+            const formatedWholesalePrice = Number(
+              values.wholesalePrice
+                ? values.wholesalePrice.replace(/,/g, "")
+                : ""
+            );
+            if (formatedStickerPrice > formatedWholesalePrice) {
               errors.stickerPrice = ERROR_MESSAGES.priceDiff;
             }
 
